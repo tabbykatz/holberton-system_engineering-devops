@@ -1,2 +1,2 @@
 #!/bin/bash
-ls */ -R -a | wc -l
+find . -type d | grep -v ^\.$ | wc -l
