@@ -1,2 +1,2 @@
 #!/bin/bash
-cat test | tr A c | tr Z e
+cat | tr A c | tr Z e
