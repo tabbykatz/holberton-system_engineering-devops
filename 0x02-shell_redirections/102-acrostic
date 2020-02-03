@@ -1,2 +1,2 @@
 #!/bin/bash
-cut (^|\\r)(.)
+cut -c 1 | cut -d$'\n' -f1
