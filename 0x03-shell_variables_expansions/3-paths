@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $PATH | find -d | wc -l
+echo $PATH | cut -d ':' -f1 | wc -l
