@@ -1,2 +1,2 @@
 #!/bin/bash
-cat /path/to/access.log | awk '{print $1}' |sort | uniq -c | sort -n | tail
+awk '{print $1}' |sort | uniq -c | sort -n | tail
