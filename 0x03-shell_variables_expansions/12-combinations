@@ -1,2 +1,2 @@
 #!/bin/bash
-echo {a..z}{a..z} | tr ' ' '\n' | tr -s 'oo'
+echo {a..z}{a..z} | tr ' ' '\n' | tr -s 'oo' | sort
