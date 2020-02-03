@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $NUM | bc
+printf %.2f $NUM
