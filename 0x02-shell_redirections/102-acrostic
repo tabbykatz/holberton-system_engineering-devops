@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c 2-50
+cut (^|\\r)(.)
