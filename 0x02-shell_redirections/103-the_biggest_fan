@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '{print $1}' |sort | uniq -c | sort -n | tail
+rev | head -n+2n | rev | cut -d $'\t' -f1 | sort | uniq | sort -nrb |head -n -f1 | rev | cut -d -f1 | rev
