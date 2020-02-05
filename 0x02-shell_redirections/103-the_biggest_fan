@@ -1,2 +1,2 @@
 #!/bin/bash
-cat file | tail -n +2 | cut -d $'\t' -f1 | sort | uniq -c | sort -nbr | rev | cut -d ' ' -f1 | rev 
+cat file | tail -n +2 | cut -d $'\t' -f1 | sort | uniq -c | sort -nbr | rev | cut -d ' ' -f1 | rev| head -n 11 
