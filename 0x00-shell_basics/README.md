@@ -1,3 +1,7 @@
+0x00- shell basics
+
+Welcome to the readme for this set of shell projects.
+
 Task 0 This script prints the absolute pathname of  my current working  directory.
 Task 1 This script displays the contents of my current directory. 
 Task 2 This script brings the user to the home directory.
