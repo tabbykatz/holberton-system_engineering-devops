@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# clock
+hour=-1
+while [ $((++hour)) -le 12 ]; do
+	echo Hour: $hour
+	minute=0
+	while [ $((++minute)) -le 59 ]; do
+		echo $minute
+	done
+done
+
