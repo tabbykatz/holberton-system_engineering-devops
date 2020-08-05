@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
-# configures a brand new Ubuntu machine to the requirements asked in this task
+# configure a brand new NGINX server
+
 apt-get -y update
 apt-get -y install nginx
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-sed -i "/server_name _;/ a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
-service nginx start
+
+echo "Holberton School" > /var/www/html/index.html
+
+sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+
+ufw allow 'Nginx HTTP'
+service nginx restart
