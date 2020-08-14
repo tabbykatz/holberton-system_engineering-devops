@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# install & properly configure NGINX server
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+echo "Holberton School" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
+sudo sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+sudo sed -i "/listen 80 default_server;/a error_page 404 /404.html;" /etc/nginx/sites-available/default
+
+sudo sed -i "/location \/ {/a add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default
+
+sudo ufw allow 'Nginx HTTP'
+sudo service nginx restart
