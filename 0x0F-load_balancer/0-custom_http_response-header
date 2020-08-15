@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install & properly configure NGINX server
+# configure a brand new NGINX server
 
 apt-get -y update
 apt-get -y install nginx
@@ -9,6 +9,6 @@ echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
 sed -i "/listen 80 default_server;/a error_page 404 /404.html;" /etc/nginx/sites-available/default
-sed -i "/server_name _;/ a\\\tadd_header X-Served-By \"\$HOSTNAME\";" /etc/nginx/sites-available/default
+sed -i '14a \\tadd_header X-Served-By '"${HOSTNAME}"';' nginx.conf
 ufw allow 'Nginx HTTP'
 service nginx restart
