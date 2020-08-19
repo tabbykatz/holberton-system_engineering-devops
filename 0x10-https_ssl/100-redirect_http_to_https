@@ -1,0 +1,43 @@
+global
+	daemon
+	maxconn 2048
+	tune.ssl.default-dh-param 2048
+
+defaults
+	option forwardfor
+	option http-server-close
+
+	log	global
+	mode	http
+	option	httplog
+	option	dontlognull
+        timeout connect 5000
+        timeout client  50000
+        timeout server  50000
+	errorfile 400 /etc/haproxy/errors/400.http
+	errorfile 403 /etc/haproxy/errors/403.http
+	errorfile 408 /etc/haproxy/errors/408.http
+	errorfile 500 /etc/haproxy/errors/500.http
+	errorfile 502 /etc/haproxy/errors/502.http
+	errorfile 503 /etc/haproxy/errors/503.http
+	errorfile 504 /etc/haproxy/errors/504.http
+
+frontend localnodes-http
+	bind *:80
+	mode http
+	reqadd X-Forwarded-Proto:\ http
+	default_backend nodes
+
+frontend localnodes-https
+	bind *:443 ssl crt /etc/haproxy/certs/tabbykatz.pem
+	mode http
+	reqadd X-Forwarded-Proto:\ https
+	http-request set-header X-SSL %[ssl_fc]
+	default_backend nodes	
+
+backend nodes
+	redirect scheme if !{ ssl_fc }
+	mode http
+	balance roundrobin
+	server 1346-web-01 35.231.213.145
+	server 1346-web-02 34.234.65.186
