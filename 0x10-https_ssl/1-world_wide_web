@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# to dig the domain and if relevant, sub
+if [ $# -eq 1 ]; then
+	domains="www.$1 lb-01.$1 web-01.$1 web-02.$1"
+else
+	domains="$2.$1"
+fi
+dig $domains | awk '/ANSWER SECTION:/ { getline; split($1, a, "."); print "The subdomain", a[1], "is a", $4, "record and points to", $5}'
