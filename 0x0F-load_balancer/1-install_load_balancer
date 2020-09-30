@@ -15,7 +15,7 @@ frontend localnodes
 backend nodes
 	mode http
 	balance roundrobin
-	server 1346-web-01 35.231.213.145
-	server 1346-web-02 34.234.65.186" >> /etc/haproxy/haproxy.cfg
+	server 1346-web-01 35.237.170.121
+	server 1346-web-02 34.75.240.48" >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
